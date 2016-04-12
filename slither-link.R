@@ -28,14 +28,14 @@ params <- list(
     {
       for(c in 1:ncol(node))
       {
-        res[length(res)+1] = list(nodeForInitialState(node, 1, r, c))
-        res[length(res)+1] = list(nodeForInitialState(node, 2, r, c))
+        res[length(res)+1] = list(nodeForNewLine(node, 1, r, c))
+        res[length(res)+1] = list(nodeForNewLine(node, 2, r, c))
 
         if(c == ncol(node))
-          res[length(res)+1] = list(nodeForInitialState(node, 3, r, c))
+          res[length(res)+1] = list(nodeForNewLine(node, 3, r, c))
 
         if(r == nrow(node))
-          res[length(res)+1] = list(nodeForInitialState(node, 4, r, c))
+          res[length(res)+1] = list(nodeForNewLine(node, 4, r, c))
         }
       }
     }
@@ -51,13 +51,13 @@ params <- list(
         newY = lastLine[4]-1
 
         if(lastLine[3] != 1 )
-          res[length(res)+1] = list(nodeForInitialState(node, 4, newX, newY))  
+          res[length(res)+1] = list(nodeForNewLine(node, 4, newX, newY))  
 
         newX = lastLine[3]
         newY = lastLine[4]-1  
         
         if(lastLine[3] != nrow(node) +1)
-          res[length(res)+1] = list(nodeForInitialState(node, 2, newX, newY))
+          res[length(res)+1] = list(nodeForNewLine(node, 2, newX, newY))
       }
       if(lastLine[3] != nrow(node)+1 && !isTheSamePoint(x, y, lastLine[3]+1, lastLine[4]))
       {
@@ -66,13 +66,13 @@ params <- list(
         newY = lastLine[4]
 
          if(lastLine[4] != ncol(node)+1 )
-          res[length(res)+1] = list(nodeForInitialState(node, 1, newX, newY))
+          res[length(res)+1] = list(nodeForNewLine(node, 1, newX, newY))
 
         newX = lastLine[3]
         newY = lastLine[4]-1  
 
         if(lastLine[4] != 1)
-         res[length(res)+1] = list(nodeForInitialState(node, 3, newX, newY))  
+         res[length(res)+1] = list(nodeForNewLine(node, 3, newX, newY))  
       }
       if(lastLine[4] != ncol(node)+1 && !isTheSamePoint(x, y, lastLine[3], lastLine[4]+1))
       {
@@ -81,13 +81,13 @@ params <- list(
         newY = lastLine[4]
 
         if(lastLine[3] != 1)
-          res[length(res)+1] = list(nodeForInitialState(node, 4, newX, newY))
+          res[length(res)+1] = list(nodeForNewLine(node, 4, newX, newY))
 
         newX = lastLine[3]
         newY = lastLine[4]    
 
         if(lastLine[3] != nrow(node)+1)
-         res[length(res)+1] = list(nodeForInitialState(node, 2, newX, newY)) 
+         res[length(res)+1] = list(nodeForNewLine(node, 2, newX, newY)) 
       }
       if(lastLine[3] != 1 && !isTheSamePoint(x, y, lastLine[3]-1, lastLine[4]))
       {
@@ -96,13 +96,13 @@ params <- list(
         newY = lastLine[4]-1   
 
         if(lastLine[4] != 1)
-          res[length(res)+1] = list(nodeForInitialState(node, 3, newX, newY))
+          res[length(res)+1] = list(nodeForNewLine(node, 3, newX, newY))
 
         newX = lastLine[3]-1
         newY = lastLine[4]     
 
         if(lastLine[4] != ncol(node)+1)
-         res[length(res)+1] = list(nodeForInitialState(node, 1, newX, newY)) 
+         res[length(res)+1] = list(nodeForNewLine(node, 1, newX, newY)) 
       }
     }
 
@@ -272,7 +272,7 @@ isStartingState <- function(node)
   return (TRUE)
 }
 
-nodeForInitialState <- function(node, direction, r,c)
+nodeForNewLine <- function(node, direction, r,c)
 {   
    	res = node
     if(direction == 1)
