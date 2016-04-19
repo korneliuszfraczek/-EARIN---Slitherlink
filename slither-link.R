@@ -5,7 +5,7 @@ params <- list(
     cost = maximalEvaluation(node)
     matrixOfLines = createMatrixOfPoints(node)
     evaluate = evaluate(node)
-    ret= cost-evaluate
+    ret = ((cost-evaluate) / cost)
 
     return (ret)
   },
