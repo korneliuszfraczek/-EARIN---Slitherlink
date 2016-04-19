@@ -516,7 +516,7 @@ if(is.na(matrixOfLines[1,1]))
         }
       }
 
-  return (totalCost)
+  return (totalCost / 2)
 }
 
 res = astar::astar(input, isFinished, params)
